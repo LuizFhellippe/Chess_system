@@ -1,4 +1,4 @@
-package Chess_system.boardGame;
+package boardGame;
 
 public class Piece {
     protected Position position;

@@ -1,11 +1,11 @@
-package Chess_system.application;
+package application;
 
-import Chess_system.boardGame.Board;
-import Chess_system.boardGame.Position;
+import Chess.ChessMatch;
 
 public class Program {
     public static void main(String[] args) {
         
-        Board board = new Board(8, 8);
+        ChessMatch chessMatch = new ChessMatch();
+        UI.printBoard(chessMatch.getPieces());
     }
 }

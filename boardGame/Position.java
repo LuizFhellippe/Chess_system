@@ -1,4 +1,4 @@
-package Chess_system.boardGame;
+package boardGame;
 
 public class Position {
     private int row;
@@ -16,7 +16,7 @@ public class Position {
     public int getRow(){
         return row;
     }
-    public int column(){
+    public int getcolumn(){
         return column;
     }
 
