@@ -29,4 +29,10 @@ public class Board {
     public Piece piece(Position position){
         return pieces[position.getRow()][position.getcolumn()];
     }
+    //coloca a peca na posicao do tabuleiro
+    public void placePiece(Piece piece, Position position){
+        pieces[position.getRow()][position.getcolumn()] = piece;
+        //a posicao a peca muda de nula pra atual
+        piece.position = position;
+    }
 }
