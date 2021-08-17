@@ -40,6 +40,18 @@ public class Board {
         //a posicao a peca muda de nula pra atual
         piece.position = position;
     }
+    public Piece removePiece(Position position){
+        if(!positionExisits(position)){//verifica se a posicao não existe
+            throw new BoardException("Position not on the board");
+        }
+        if(piece(position) == null){//verifica se ha peca na posicao
+            return null;
+        }
+        Piece aux = piece(position);
+        aux.position = null;
+        pieces[position.getRow()][position.getcolumn()] = null;
+        return aux;
+    }
     private boolean positionExisits(int row, int column){
         //verifica se a posicao na dada linha e coluna existe
         return row >= 0 && row < rows && column >= 0 && column < columns;
