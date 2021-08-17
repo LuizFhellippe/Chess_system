@@ -7,10 +7,20 @@ import chessPieces.King;
 import chessPieces.Rook;
 
 public class ChessMatch {
+    private int turn;
+    private Color currentPlayer;
     private Board board;
     public ChessMatch(){
         board = new Board(8, 8);
         initialSetup();
+        turn = 1;
+        currentPlayer = Color.WHITE;
+    }
+    public int getTurn(){
+        return turn;
+    }
+    public Color getCurrentPlayer(){
+        return currentPlayer;
     }
     public ChessPiece[][] getPieces(){
         ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
@@ -32,6 +42,7 @@ public class ChessMatch {
         validateSourcePosition(source);//valida se halia peca na posicao de origem
         validateTargetPosition(source, target);//valida se ha posicao de destino
         Piece capturedPiece = makeMove(source, target);
+        nextTurn();
         return (ChessPiece)capturedPiece;
     }
     private Piece makeMove(Position source, Position target){
@@ -44,6 +55,9 @@ public class ChessMatch {
         if(!board.thereIsAPiece(position)){//testa se nao ha peca
             throw new ChessException("There is no piece on source position");
         }
+        if(currentPlayer != ((ChessPiece)board.piece(position)).getColor()){
+            throw new ChessException("The chose piece isn't yours");
+        }
         if(!board.piece(position).isThereAnyPossibleMove()){//testa se ha movimento possivel
             throw new ChessException("There is no possible moves for the chose piece");
         }
@@ -52,6 +66,11 @@ public class ChessMatch {
         if(!board.piece(source).possibleMove(target)){//caso nao tenho movimento possivel para a peca de origem
             throw new ChessException("The chose piece can't move to target position.");
         }
+    }
+    public void nextTurn(){//muda de turno
+        turn++;
+        //se o jogador atual for branco, então agora ele vai ser preto, caso contrario vai ser branco
+        currentPlayer = (currentPlayer == Color.WHITE) ? Color.BLACK : Color.WHITE;
     }
     //coloca a peca passando as coordenadas na posicao de xadrez
     private void placeNewPiece(char column, int row, ChessPiece piece){
