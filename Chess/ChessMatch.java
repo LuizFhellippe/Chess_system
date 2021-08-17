@@ -38,6 +38,9 @@ public class ChessMatch {
         if(!board.thereIsAPiece(position)){//testa se nao ha peca
             throw new ChessException("There is no piece on source position");
         }
+        if(!board.piece(position).isThereAnyPossibleMove()){//testa se ha movimento possivel
+            throw new ChessException("There is no possible moves for the chose piece");
+        }
     }
     //coloca a peca passando as coordenadas na posicao de xadrez
     private void placeNewPiece(char column, int row, ChessPiece piece){
