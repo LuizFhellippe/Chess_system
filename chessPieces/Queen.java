@@ -5,9 +5,9 @@ import Chess.Color;
 import boardGame.Board;
 import boardGame.Position;
 
-public class Rook extends ChessPiece{
+public class Queen extends ChessPiece{
 
-    public Rook(Board board, Color color) {
+    public Queen(Board board, Color color) {
         super(board, color);
         //TODO Auto-generated constructor stub
     }
@@ -57,12 +57,51 @@ public class Rook extends ChessPiece{
         if(getBoard().positionExisits(p) && isThereOpponentPiece(p)){
             mat[p.getRow()][p.getcolumn()] = true;
         }
+        //northwest
+        p.setvalues(position.getRow()-1, position.getcolumn()-1);
+        while(getBoard().positionExisits(p) && !getBoard().thereIsAPiece(p)){//enquanto a posicao existir e estiver vaga
+            mat[p.getRow()][p.getcolumn()] = true;
+            p.setvalues(p.getRow()-1, p.getcolumn()-1);
+        }
+        if(getBoard().positionExisits(p) && isThereOpponentPiece(p)){
+            mat[p.getRow()][p.getcolumn()] = true;
+        }
+        
+        //north east
+        p.setvalues(position.getRow()-1, position.getcolumn()+1);
+        while(getBoard().positionExisits(p) && !getBoard().thereIsAPiece(p)){//enquanto a posicao existir e estiver vaga
+            mat[p.getRow()][p.getcolumn()] = true;
+            p.setvalues(p.getRow()-1, p.getcolumn()+1);
+        }
+        if(getBoard().positionExisits(p) && isThereOpponentPiece(p)){
+            mat[p.getRow()][p.getcolumn()] = true;
+        }
+
+        //southesat
+        p.setvalues(position.getRow()+1, position.getcolumn()+1);
+        while(getBoard().positionExisits(p) && !getBoard().thereIsAPiece(p)){//enquanto a posicao existir e estiver vaga
+            mat[p.getRow()][p.getcolumn()] = true;
+            p.setvalues(p.getRow()+1, p.getcolumn()+1);
+        }
+        if(getBoard().positionExisits(p) && isThereOpponentPiece(p)){
+            mat[p.getRow()][p.getcolumn()] = true;
+        }
+
+        //south-west
+        p.setvalues(position.getRow()+1, position.getcolumn()-1);
+        while(getBoard().positionExisits(p) && !getBoard().thereIsAPiece(p)){//enquanto a posicao existir e estiver vaga
+            mat[p.getRow()][p.getcolumn()] = true;
+            p.setvalues(p.getRow()+1, p.getcolumn()-1);
+        }
+        if(getBoard().positionExisits(p) && isThereOpponentPiece(p)){
+            mat[p.getRow()][p.getcolumn()] = true;
+        }
         return mat;
     }
-    
+
     @Override
     public String toString(){
-        return "R";
+        return "Q";
     }
     
 }
