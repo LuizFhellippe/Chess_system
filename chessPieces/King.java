@@ -63,7 +63,7 @@ public class King extends ChessPiece{
             mat[p.getRow()][p.getcolumn()] = true;
         }
 
-        //sudoesrte
+        //sudoeste
         p.setvalues(position.getRow()+1 , position.getcolumn()-1);
         if(getBoard().positionExisits(p) && canMove(p)){
             mat[p.getRow()][p.getcolumn()] = true;

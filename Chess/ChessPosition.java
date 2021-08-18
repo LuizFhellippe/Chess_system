@@ -25,7 +25,7 @@ public class ChessPosition {
     }
     //retorna a posicao da matriz como posicao normal
     protected static ChessPosition fromPosition(Position position){
-        return new ChessPosition( (char)('a' - position.getcolumn()), 8 - position.getRow());
+        return new ChessPosition((char)('a' + position.getcolumn()), 8 - position.getRow());
     }
 
     @Override
